@@ -1,0 +1,23 @@
+// Soong namespace for the msm8974 display HAL.
+//
+// hardware/qcom-caf/common sets qtidisplay.headers_namespace to
+// hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)/display, and surfaceflinger
+// then depends on "//<that path>:display_intf_headers". Soong resolves fully
+// qualified names by exact namespace path, so this directory must be one.
+// The HAL modules themselves are still built from Android.mk.
+soong_namespace {
+}
+
+// Consumed by frameworks/native surfaceflinger (gralloc_priv.h for
+// GRALLOC_USAGE_PRIVATE_WFD), and by anything else using the qtidisplay
+// headers namespace.
+cc_library_headers {
+    name: "display_intf_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        "libgralloc",
+        "libqdutils",
+    ],
+    header_libs: ["libhardware_headers"],
+    export_header_lib_headers: ["libhardware_headers"],
+}
