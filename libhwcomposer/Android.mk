@@ -19,7 +19,7 @@ ifeq ($(GET_DISPLAY_SECURE_STATUS_FROM_HWC),true)
     LOCAL_CFLAGS += -DGET_DISPLAY_SECURE_STATUS_FROM_HWC
 endif
 
-LOCAL_HEADER_LIBRARIES        := display_headers generated_kernel_headers
+LOCAL_HEADER_LIBRARIES        := display_headers generated_kernel_headers gl_headers
 LOCAL_SRC_FILES               := hwc.cpp          \
                                  hwc_utils.cpp    \
                                  hwc_uevents.cpp  \

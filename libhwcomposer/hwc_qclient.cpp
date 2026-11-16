@@ -27,6 +27,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <binder/Parcel.h>
 #include <hwc_qclient.h>
 #include <IQService.h>
 #include <hwc_utils.h>

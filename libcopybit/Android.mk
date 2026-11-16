@@ -22,7 +22,7 @@ LOCAL_VENDOR_MODULE           := true
 LOCAL_MODULE_TAGS             := optional
 LOCAL_SHARED_LIBRARIES        := $(common_libs) libdl libmemalloc
 LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdcopybit\" -Wno-sign-conversion
-LOCAL_HEADER_LIBRARIES        := display_headers generated_kernel_headers
+LOCAL_HEADER_LIBRARIES        := display_headers generated_kernel_headers gl_headers
 LOCAL_CLANG                   := true
 
 ifeq ($(TARGET_USES_C2D_COMPOSITION),true)
