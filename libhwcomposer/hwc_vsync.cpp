@@ -19,7 +19,7 @@
  */
 
 #include <cutils/properties.h>
-#include <bfqio/bfqio.h>
+#include <sys/syscall.h>
 #include <utils/Log.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -99,7 +99,9 @@ static void *vsync_loop(void *param)
     if (sched_setscheduler(gettid(), SCHED_FIFO, &sched_param) != 0) {
         ALOGE("Couldn't set SCHED_FIFO for hwc_vsync");
     }
-    android_set_rt_ioprio(0, 1);
+    // Was android_set_rt_ioprio(0, 1) from libbfqio, which no longer exists.
+    // IOPRIO_WHO_PROCESS = 1, IOPRIO_CLASS_RT = 1, level 1.
+    syscall(SYS_ioprio_set, 1, 0, (1 << 13) | 1);
 
     char vdata[MAX_DATA];
     //Number of physical displays

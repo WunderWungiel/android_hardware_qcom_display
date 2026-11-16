@@ -36,7 +36,7 @@
 #include <cutils/log.h>
 #include <sys/stat.h>
 #include <comptype.h>
-#ifdef QTI_BSP
+#ifdef HWC_DUMP_LAYERS_PNG /* needs Skia (libhwui), platform-only */
 #include <SkBitmap.h>
 #include <SkImageEncoder.h>
 #endif
@@ -306,7 +306,7 @@ void HwcDebug::dumpLayer(size_t layerIndex, hwc_layer_1_t hwLayers[])
     }
 
     getHalPixelFormatStr(hnd->format, pixFormatStr);
-#ifdef QTI_BSP
+#ifdef HWC_DUMP_LAYERS_PNG /* needs Skia (libhwui), platform-only */
     if (needDumpPng && hnd->base) {
         bool bResult = false;
         char dumpFilename[PATH_MAX];
