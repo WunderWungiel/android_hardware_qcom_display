@@ -6,14 +6,9 @@ display-hals += libmemtrack
 ifneq ($(TARGET_PROVIDES_LIBLIGHT),true)
 display-hals += liblight
 endif
-ifeq ($(call is-vendor-board-platform,QCOM),true)
-    include $(call all-named-subdir-makefiles,$(display-hals))
-else
-ifneq ($(filter msm8960,$(TARGET_BOARD_PLATFORM)),)
-    #This is for mako since it doesn't have the QCOM make functions
-    include $(call all-named-subdir-makefiles,$(display-hals))
-endif
-endif
+# This tree is only picked up through project-path-for (QCOM_HARDWARE_VARIANT
+# msm8974), and qcom_boards.mk no longer lists msm8974 in QCOM_BOARD_PLATFORMS.
+include $(call all-named-subdir-makefiles,$(display-hals))
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := display_headers
